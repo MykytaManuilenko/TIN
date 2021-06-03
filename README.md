@@ -7,3 +7,7 @@
 3. Enter cd .. in console
 4. Enter npm start in console
 5. Enter http://localhost:3000/ in the browser
+
+## Database schema
+
+![Database schema] (./Database_schema.png)
