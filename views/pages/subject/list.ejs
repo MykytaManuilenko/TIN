@@ -1,0 +1,38 @@
+<%- include('../../fragments/header.ejs') %>   
+    <main class="main">
+        <h2 class="title" id="subject-list">Subjects list</h2>
+        <hr class="div">
+
+        <table class="table-list">
+            <thead>
+                <tr>
+                    <th class="table-list__header">Semester</th>
+                    <th class="table-list__header">Subject name</th>
+                    <th class="table-list__header">Code</th>
+                    <th class="table-list__header">Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% for (let subject of subjects) { %>
+                    <tr>
+                        <td><%= subject.semester %></td>
+                        <td><%= subject.subjectName %></td>
+                        <td><%= subject.code %></td>
+                        <td>
+                            <ul class="table-list__actions">
+                                <li><a class="table-list__btn-actions-details" href="/subjects/details/<%=subject._id%>">Details</a></li>
+                                <li><a class="table-list__btn-actions-edit" href="/subjects/edit/<%=subject._id%>">Edit</a></li>
+                                <li><a class="table-list__btn-actions-delete" href="/subjects/delete/<%=subject._id%>">Delete</a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                <% } %>   
+            </tbody>
+        </table>
+
+        <div>
+            <a class="btn btn-add" href="/subjects/add">Add new subject</a>
+        </div>
+    </main>
+<%- include('../../fragments/footer.ejs') %>

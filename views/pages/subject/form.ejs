@@ -1,0 +1,98 @@
+<%- include('../../fragments/header.ejs') %>  
+    <main class="main">
+        <h2 class="title"><%=pageTitle%></h2>
+        <hr class="div">
+
+        <form class="main__form" method="POST" action="<%= formAction %>" novalidate onsubmit="return validateForm();">
+            <input type="hidden" name="_id" value="<%= subject._id %>">
+
+            <label for="subjName">Subject name:<abbr title="required" aria-label="required">*</abbr></label>
+            <input class="<%=validationErrors && validationErrors.find(e => e.path.includes('subjectName')) ? 'error-input' : '' %>" 
+            type="text" name="subjectName" id="subjName" placeholder="2-25 characters" value="<%= subject.subjectName %>"/>
+
+            <span id="errorSubjName" class="errors-text">
+                <% if (validationErrors && validationErrors.find(e => e.path.includes('subjectName'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('subjectName')).message %>
+                <% } %>
+            </span>
+
+            <label for="subjCode">Subject code:<abbr title="required" aria-label="required">*</abbr></label>
+            <input class="<%=validationErrors && validationErrors.find(e => e.path.includes('code')) ? 'error-input' : '' %>" 
+            type="text" name="code" id="subjCode" placeholder="2-5 characters" value="<%= subject.code %>"/>
+
+            <span id="errorSubjCode" class="errors-text">
+                <% if (validationErrors && validationErrors.find(e => e.path.includes('code'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('code')).message %>
+                <% } %>
+            </span>
+
+            <label for="semester">Semester:<abbr title="required" aria-label="required">*</abbr></label>
+            <select class="<%=validationErrors && validationErrors.find(e => e.path.includes('semester')) ? 'error-input' : '' %>" 
+                name="semester" id="semester">
+                <option>Choose semester</option>
+                <% for (let i = 1; i <= 7; i++) { %>
+                    <option <%= (String(subject.semester) === String(i) ? 'selected' : '') %>><%=i%></option>
+                <% } %>
+            </select>
+            
+            <span id="errorSemester" class="errors-text">
+                <% if (validationErrors && validationErrors.find(e => e.path.includes('semester'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('semester')).message %>
+                <% } %>
+            </span>
+
+            <label for="ects">ECTS:<abbr title="required" aria-label="required">*</abbr></label>
+            <select class="<%=validationErrors && validationErrors.find(e => e.path.includes('ECTS')) ? 'error-input' : '' %>" 
+                name="ECTS" id="ects">
+                <option>Choose ECTS</option>
+                <% for (let i = 0; i <= 7; i++) { %>
+                    <option <%= (String(subject.ECTS) === String(i) ? 'selected' : '') %>><%=i%></option>
+                <% } %>
+            </select>
+
+            <span id="errorEcts" class="errors-text">
+                <% if (validationErrors && validationErrors.find(e => e.path.includes('ECTS'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('ECTS')).message %>
+                <% } %>
+            </span>
+
+            <label for="courseType">Course type:<abbr title="required" aria-label="required">*</abbr></label>
+            <select class="<%=validationErrors && validationErrors.find(e => e.path.includes('courseType')) ? 'error-input' : '' %>"  
+                name="courseType" id="courseType">
+                <option>Choose course type</option>
+                <option <%= (subject.courseType === 'Compulsory' ? 'selected' : '') %>>Compulsory</option>
+                <option <%= (subject.courseType === 'Specialization' ? 'selected' : '') %>>Specialization</option>
+            </select>
+            
+            <span id="errorCourseType" class="errors-text">
+                <% if (validationErrors && validationErrors.find(e => e.path.includes('courseType'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('courseType')).message %>
+                <% } %>
+            </span>
+
+            <label for="specialization">Specialization:</label>
+            <select class="<%=validationErrors && validationErrors.find(e => e.path.includes('specialization')) ? 'error-input' : '' %>"   
+                name="specialization" id="specialization">
+                <option>Choose specialization</option>
+                <option <%= (subject.specialization === 'None' ? 'selected' : '') %>>None</option>
+                <option <%= (subject.specialization === 'Databases' ? 'selected' : '') %>>Databases</option>
+                <option <%= (subject.specialization === 'Software and database engineering' ? 'selected' : '') %>>Software and database engineering</option>
+                <option <%= (subject.specialization === 'Systems and network programming' ? 'selected' : '') %>>Systems and network programming</option>
+                <option <%= (subject.specialization === 'Multimedia' ? 'selected' : '') %>>Multimedia</option>
+            </select>
+
+            <span id="errorSpecialization" class="errors-text">
+                <% if (validationErrors && validationErrors.find(e => e.path.includes('specialization'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('specialization')).message %>
+                <% } %>
+            </span>
+
+            <span id="errorsSummary" class="errors-text"></span>
+            <input class="btn form-btn__submit" type="submit" value="<%=btnLabel%>"/>
+            <a class="btn form-btn__cancel" href="/subjects">Cancel</a>
+        </form>
+    </main>
+
+    <script type="application/javascript" src="../../js/validationCommon.js"></script>
+    <script type="application/javascript" src="../../js/validationSubjectForm.js"></script>
+<%- include('../../fragments/footer.ejs') %>

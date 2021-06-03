@@ -1,0 +1,108 @@
+.btn {
+	margin-top: 35px;
+	width: 110px;
+	height: 30px;
+	display: inline-block;
+	padding: 0.25rem 0.5rem;
+	border: none;
+	outline: none;
+	border-radius: 2px;
+
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	font-size: 1.0625rem;
+}
+
+.btn-add {
+	margin-top: 2.5rem;
+	width: 210px;
+	height: 40px;
+	padding: 0.5rem 1rem;
+	background-color: #20ad5b;
+	font-size: 1.2813rem;
+	font-family: inherit;
+	transition: 0.5s all;
+}
+
+.btn-add:hover {
+	background-color: #24c266;
+}
+
+.form-btn__submit,
+.form-btn__cancel,
+.btn-return-grid,
+.btn-edit-grid {
+	grid-column-start: 1;
+	grid-column-end: -1;
+	border-radius: 5px;
+	font-size: 1.1875rem;
+	font-family: inherit;
+	grid-column: 1 / span 2;
+}
+
+.form-btn__submit,
+.form-btn__cancel {
+	width: 100%;
+	height: 30px;
+}
+
+.form-btn__submit {
+	background-color: #27ae60;
+	cursor: pointer;
+}
+
+.form-btn__submit:hover {
+	background-color: #2ecc71;
+}
+
+.form-btn__cancel {
+	margin-top: -10px;
+	background-color: #c0392b;
+}
+
+.form-btn__cancel:hover {
+	background-color: #e74c3c;
+}
+
+.btn-edit {
+	background-color: #b48b05;
+	transition: 0.5s all;
+}
+
+.btn-edit:hover {
+	background-color: #cca91f;
+}
+
+.btn-return {
+	background-color: #176faa;
+	transition: 0.5s all;
+}
+
+.btn-return_without-mt {
+	margin-top: 0;
+}
+
+.btn-return:hover {
+	background-color: #2a91d6;
+}
+
+.btn-return-grid,
+.btn-edit-grid {
+	width: 100%;
+}
+
+.btn-return-grid {
+	margin-top: -10px;
+}
+
+.btn-edit-grid {
+	margin-top: 10px;
+}
+
+@media (max-width: 1199px) {
+	.btn-add {
+		width: 190px;
+		font-size: 1.1875rem;
+	}
+}

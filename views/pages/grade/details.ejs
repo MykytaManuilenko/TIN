@@ -1,0 +1,38 @@
+<%- include('../../fragments/header.ejs') %> 
+    <main class="main">
+        <h2 class="title"><%= pageTitle %></h2>
+        <hr class="div">
+
+        <form class="main__form main__form-2col" method="GET">
+            <label for="firstName">First name:</label>
+            <input type="text" name="firstName" id="firstName" value="<%=grade.student.firstName%>" disabled/>
+
+            <label for="lastName">Last name:</label>
+            <input type="text" name="lastName" id="lastName" value="<%=grade.student.lastName%>" disabled/>
+
+            <label for="snumber">Student number:</label>
+            <input type="text" name="snumber" id="snumber" value="<%=grade.student.studentNumber%>" disabled/>
+
+            <label for="currentSemester">Current semester:</label>
+            <input type="text" name="currentSemester" id="currentSemester" value="<%=grade.student.currentSemester%>" disabled/>
+
+            <label for="subjName">Subject name:</label>
+            <input type="text" name="subjName" id="subjName" value="<%=grade.subject.subjectName%>" disabled/>
+
+            <label for="code">Code:</label>
+            <input type="text" name="code" id="code" value="<%=grade.subject.code%>" disabled/>
+
+            <label for="grade">Grade:</label>
+            <input type="text" name="grade" id="grade" value="<%= (!grade.grade) ? '' : grade.grade%>" disabled/>
+
+            <label for="teacher">Teacher:</label>
+            <input type="text" name="teacher" id="teacher" value="<%=grade.teacher%>" disabled/>
+
+            <label for="date">Grade date:</label>
+            <input type="text" name="date" id="date" value="<%=(!grade.grade) ? '' : grade.date.toISOString().split('T')[0]%>" disabled/>
+
+            <a href="/grades/edit/<%= grade._id %>" class="btn btn-edit btn-edit-grid">Edit</a>
+            <a href="/grades" class="btn btn-return btn-return_without-mt btn-return-grid">Return</a>
+        </form>
+    </main>
+<%- include('../../fragments/footer.ejs') %>

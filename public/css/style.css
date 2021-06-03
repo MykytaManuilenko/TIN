@@ -1,0 +1,32 @@
+@import 'fonts.css';
+@import 'header.css';
+@import 'footer.css';
+@import 'buttons.css';
+@import 'forms.css';
+@import 'tables.css';
+
+* {
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.main {
+	max-width: 92%;
+	min-height: calc(100vh - 25.4375rem);
+	margin: 11.75rem auto;
+}
+
+.title {
+	font-size: 2.0625rem;
+	margin-top: 50px;
+}
+
+.div {
+	margin: 0.3125rem 0 2rem 0;
+}
+
+@media (max-width: 991px) {
+	.title {
+		font-size: 1.75rem;
+	}
+}

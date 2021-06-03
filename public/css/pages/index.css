@@ -1,0 +1,40 @@
+.main-page-bg {
+    width: 100%;
+}
+
+.descr {
+    font-family: 'PT Sans Caption';
+    max-width: 94%;
+    margin: 1.75rem auto;
+}
+
+.descr .descr__paragraph {
+    margin-top: 0.625rem;
+}
+
+.descr .descr__text {
+    margin-top: 0.375rem;
+    font-size: 1.125rem;
+}
+
+.descr .descr__div {
+    margin: 1.25rem 0;
+}
+
+.descr .desc__subtitle {
+    font-size: 1.75rem;
+}
+
+@media (max-width: 991px) {
+    .descr .descr__text {
+        font-size: 1.0625rem;
+    }   
+
+    .descr .desc__subtitle  {
+        font-size: 1.5625rem;
+    }
+
+    .descr .descr__paragraph {
+        font-size: 0.9375rem;
+    }
+}

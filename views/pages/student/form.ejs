@@ -1,0 +1,93 @@
+<%- include('../../fragments/header.ejs') %>  
+    <main class="main">
+        <h2 class="title"><%=pageTitle%></h2>
+        <hr class="div">
+
+        <form class="main__form" method="POST" action="<%= formAction %>" novalidate onsubmit="return validateForm();">
+            <input type="hidden" name="_id" value="<%= student._id %>">
+            
+            <label for="firstName">First name:<abbr title="required" aria-label="required">*</abbr></label>
+            <input class="<%=validationErrors && validationErrors.find(e => e.path.includes('firstName')) ? 'error-input' : '' %>" 
+            type="text" name="firstName" id="firstName" placeholder="2-50 characters" value="<%= student.firstName %>"/>
+
+            <span id="errorFirstName" class="errors-text">
+                <% if (validationErrors && validationErrors.find(e => e.path.includes('firstName'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('firstName')).message %>
+                <% } %>
+            </span>
+
+            <label for="surname">Last name:<abbr title="required" aria-label="required">*</abbr></label>
+            <input class="<%=validationErrors && validationErrors.find(e => e.path.includes('lastName')) ? 'error-input' : '' %>" 
+            type="text" name="lastName" id="surname" placeholder="2-50 characters" value="<%= student.lastName %>"/>
+
+            <span id="errorLastName" class="errors-text">
+                <% if (validationErrors && validationErrors.find(e => e.path.includes('lastName'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('lastName')).message %>
+                <% } %>
+            </span>
+           
+            <label for="snumber">Student number:<abbr title="required" aria-label="required">*</abbr></label>
+            <input class="<%=validationErrors && validationErrors.find(e => e.path.includes('studentNumber')) ? 'error-input' : '' %>" 
+            type="text" name="studentNumber" id="snumber" placeholder="2-50 characters" value="<%= student.studentNumber %>"/>
+
+            <span id="errorStudentNumber" class="errors-text">
+                <% if (validationErrors && validationErrors.find(e => e.path.includes('studentNumber'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('studentNumber')).message %>
+                <% } %>
+            </span>
+
+            <label for="email">Email:<abbr title="required" aria-label="required">*</abbr></label>
+            <input class="<%=validationErrors && validationErrors.find(e => e.path.includes('email')) ? 'error-input' : '' %>"
+            type="email" name="email" id="email" placeholder="e.g. s19504@domena.pl" value="<%= student.email %>"/>
+
+            <span id="errorEmail" class="errors-text">
+                <% if (validationErrors && validationErrors.find(e => e.path.includes('email'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('email')).message %>
+                <% } %>
+            </span>
+
+            <label for="dateOfBirth">Date of birth:<abbr title="required" aria-label="required">*</abbr></label>
+            <input class="<%=validationErrors && validationErrors.find(e => e.path.includes('dateOfBirth')) ? 'error-input' : '' %>"
+            type="date" name="dateOfBirth" id="dateOfBirth"
+            <% if (formMode === 'edit') { %>
+                value="<%= (typeof (student.dateOfBirth) === 'string') ? student.dateOfBirth : student.dateOfBirth.toISOString().split('T')[0] %>"
+            <% } %>/>
+
+            <span id="errorDateOfBirth" class="errors-text">
+                <% if (validationErrors && validationErrors.find(e => e.path.includes('dateOfBirth'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('dateOfBirth')).message %>
+                <% } %>
+            </span>
+            
+            <label for="phoneNr">Phone number:</label>
+            <input class="<%=validationErrors && validationErrors.find(e => e.path.includes('phoneNumber')) ? 'error-input' : '' %>"
+            type="tel" name="phoneNumber" id="phoneNr" placeholder="e.g. 123 456 789" value="<%= student.phoneNumber %>"/>
+
+            <span id="errorPhoneNumber" class="errors-text">
+                <% if (validationErrors && validationErrors.find(e => e.path.includes('phoneNumber'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('phoneNumber')).message %>
+                <% } %>
+            </span>
+
+            <label for="gender">Gender:<abbr title="required" aria-label="required">*</abbr></label>
+            <select class="<%=validationErrors && validationErrors.find(e => e.path.includes('gender')) ? 'error-input' : '' %>" name="gender" id="gender">
+                <option>Choose gender</option>
+                <option <%= (student.gender === 'Male' ? 'selected' : '') %>>Male</option>
+                <option <%= (student.gender === 'Female' ? 'selected' : '') %>>Female</option>
+            </select>
+
+            <span id="errorGender" class="errors-text">
+                <% if (validationErrors && validationErrors.find(e => e.path.includes('gender'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('gender')).message %>
+                <% } %>
+            </span>
+
+            <span id="errorsSummary" class="errors-text"></span>
+            <input class="btn form-btn__submit" type="submit" value="<%=btnLabel%>"/>
+            <a class="btn form-btn__cancel" href="/students">Cancel</a>
+        </form>
+    </main>
+
+    <script type="application/javascript" src="../../js/validationCommon.js"></script>
+    <script type="application/javascript" src="../../js/validationStudentForm.js"></script>
+<%- include('../../fragments/footer.ejs') %>

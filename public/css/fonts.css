@@ -1,0 +1,29 @@
+@font-face {
+    font-family: 'Helvetica Neue';
+    src: url('../fonts/HelveticaNeueCyr-UltraLight.eot');
+    src: url('../fonts/HelveticaNeueCyr-UltraLight.eot') format('embedded-opentype'),
+    url('../fonts/HelveticaNeueCyr-UltraLight.woff') format('woff'),
+    url('../fonts/HelveticaNeueCyr-UltraLight.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PT Sans Caption';
+    src: url('../fonts/PTSans-Caption.eot');
+    src: url('../fonts/PTSans-Caption.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/PTSans-Caption.woff') format('woff'),
+    url('../fonts/PTSans-Caption.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PT Sans Caption';
+    src: url('../fonts/PTSans-CaptionBold.eot');
+    src: url('../fonts/PTSans-CaptionBold.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/PTSans-CaptionBold.woff') format('woff'),
+    url('../fonts/PTSans-CaptionBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}

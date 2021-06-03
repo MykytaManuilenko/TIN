@@ -102,3 +102,11 @@ dist
 
 # TernJS port file
 .tern-port
+
+package-lock.json
+
+*.DS_Store
+.idea/Test-task.iml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml

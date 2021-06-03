@@ -1,0 +1,42 @@
+<%- include('../../fragments/header.ejs') %> 
+    <main class="main">
+        <h2 id="grade-list" class="title">Grades list</h2>
+        <hr class="div">
+
+        <table class="table-list">
+            <thead>
+                <tr>
+                    <th class="table-list__header">First name</th>
+                    <th class="table-list__header">Last name</th>
+                    <th class="table-list__header">Student number</th>
+                    <th class="table-list__header">Subject name</th>
+                    <th class="table-list__header">Grade</th>
+                    <th class="table-list__header">Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% for (let grade of grades) { %>
+                    <tr>
+                        <td><%= grade.student.firstName %></td>
+                        <td><%= grade.student.lastName %></td>
+                        <td><%= grade.student.studentNumber %></td>
+                        <td><%= grade.subject.subjectName %></td>
+                        <td><%= grade.grade %></td>
+                        <td>
+                            <ul class="table-list__actions">
+                                <li><a class="table-list__btn-actions-details" href="/grades/details/<%=grade._id%>">Details</a></li>
+                                <li><a class="table-list__btn-actions-edit" href="/grades/edit/<%=grade._id%>">Edit</a></li>
+                                <li><a class="table-list__btn-actions-delete" href="/grades/delete/<%=grade._id%>">Delete</a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                <% } %>  
+            </tbody>
+        </table>
+
+        <div>
+            <a class="btn btn-add" href="/grades/add">Add new grade</a>
+        </div>
+    </main>
+<%- include('../../fragments/footer.ejs') %>

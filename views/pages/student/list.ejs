@@ -1,0 +1,38 @@
+<%- include('../../fragments/header.ejs') %>  
+    <main class="main">
+        <h2 id="student-list" class="title">Students list</h2>
+        <hr class="div">
+
+        <table class="table-list">
+            <thead>
+                <tr>
+                    <th class="table-list__header">First name</th>
+                    <th class="table-list__header">Second name</th>
+                    <th class="table-list__header">E-mail</th>
+                    <th class="table-list__header">Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% for (let student of students) { %>
+                    <tr>
+                        <td><%= student.firstName %></td>
+                        <td><%= student.lastName %></td>
+                        <td><%= student.email %></td>
+                        <td>
+                            <ul class="table-list__actions">
+                                <li><a class="table-list__btn-actions-details" href="/students/details/<%=student._id%>">Details</a></li>
+                                <li><a class="table-list__btn-actions-edit" href="/students/edit/<%=student._id%>">Edit</a></li>
+                                <li><a class="table-list__btn-actions-delete" href="/students/delete/<%=student._id%>">Delete</a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                <% } %>   
+            </tbody>
+        </table>
+
+        <div>
+            <a class="btn btn-add" href="/students/add">Add new student</a>
+        </div>
+    </main>
+<%- include('../../fragments/footer.ejs') %>

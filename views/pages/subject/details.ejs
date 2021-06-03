@@ -1,0 +1,59 @@
+<%- include('../../fragments/header.ejs') %>  
+    <main class="main">
+        <h2 class="title"><%= pageTitle %></h2>
+        <hr class="div">
+
+        <form class="main__form main__form-2col" method="GET">
+            <label for="semester">Semester</label>
+            <input type="text" name="semester" id="semester" value="<%= subject.semester %>" disabled/>
+
+            <label for="subjName">Subject name:</label>
+            <input type="text" name="subjName" id="subjName" value="<%= subject.subjectName %>" disabled/>
+
+            <label for="code">Code:</label>
+            <input type="text" name="code" id="code" value="<%= subject.code %>" disabled/>
+
+            <label for="ects">ECTS:</label>
+            <input type="text" name="ects" id="ects" value="<%= subject.ECTS %>" disabled/>
+
+            <label for="courseType">Course type:</label>
+            <input type="text" name="courseType" id="courseType" value="<%= subject.courseType %>" disabled/>
+
+            <label for="specialization">Specialization:</label>
+            <input type="text" name="specialization" id="specialization" value="<%= subject.specialization %>" disabled/>
+        </form>
+
+        <div>
+            <a class="btn btn-edit" href="/subjects/edit/<%= subject._id %>">Edit</a>
+        </div>
+
+        <h2 class="title">Student Details</h2>
+        <hr class="div">
+
+        <table class="table-list">
+            <thead>
+                <tr>
+                    <th class="table-list__header">Grade</th>
+                    <th class="table-list__header">First Name</th>
+                    <th class="table-list__header">Last Name</th>
+                    <th class="table-list__header">Student number</th>
+                    <th class="table-list__header">E-mail</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% for (let subj of subject.grades) { %>
+                    <tr>
+                        <td><%= subj.grade %></td>
+                        <td><%= subj.student.firstName %></td>
+                        <td><%= subj.student.lastName %></td>
+                        <td><%= subj.student.studentNumber %></td>
+                        <td><%= subj.student.email %></td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+
+        <a href="/subjects" class="btn btn-return">Return</a>
+    </main>
+<%- include('../../fragments/footer.ejs') %>

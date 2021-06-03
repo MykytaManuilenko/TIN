@@ -1,0 +1,65 @@
+<%- include('../../fragments/header.ejs') %>  
+    <main class="main">
+        <h2 class="title"><%= pageTitle %></h2>
+        <hr class="div">
+
+        <form class="main__form main__form-2col" method="GET">
+            <label for="firstName">First name:</label>
+            <input type="text" name="firstName" id="firstName" value="<%= student.firstName %>" disabled/>
+
+            <label for="surname">Last name:</label>
+            <input type="text" name="surname" id="surname" value="<%= student.lastName %>" disabled/>
+           
+            <label for="snumber">Student number:</label>
+            <input type="text" name="snumber" id="snumber" value="<%= student.studentNumber %>" disabled/>
+
+            <label for="email">E-mail:</label>
+            <input type="email" name="email" id="email" value="<%= student.email %>" disabled/>
+
+            <label for="dateOfBirth">Date of birth:</label>
+            <input type="text" name="dateOfBirth" id="dateOfBirth" value="<%= student.dateOfBirth.toISOString().split('T')[0] %>" disabled/>
+        
+            <label for="phoneNr">Phone number:</label>
+            <input type="text" name="phoneNr" id="phoneNr" value="<%= student.phoneNumber %>" disabled/>
+
+            <label for="gender">Gender:</label>
+            <input type="text" name="gender" id="gender" value="<%= student.gender %>" disabled/>
+
+            <label for="semester">Current semester:</label>
+            <input type="text" name="semester" id="semester" value="<%= student.currentSemester %>" disabled/>
+        </form>
+
+        <div>
+            <a class="btn btn-edit" href="/students/edit/<%= student._id %>">Edit</a>
+        </div>
+
+        <h2 class="title">Student Grades</h2>
+        <hr class="div">
+
+        <table class="table-list">
+            <thead>
+                <tr>
+                    <th class="table-list__header">Semester</th>
+                    <th class="table-list__header">Subject name</th>
+                    <th class="table-list__header">Grade</th>
+                    <th class="table-list__header">Date</th>
+                    <th class="table-list__header">Teacher</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% for (let stud of student.grades) { %>
+                    <tr>
+                        <td><%= stud.subject.semester %></td>
+                        <td><%= stud.subject.subjectName %></td>
+                        <td><%= stud.grade %></td>
+                        <td><%= stud.date.toISOString().split('T')[0] %></td>
+                        <td><%= stud.teacher %></td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+
+        <div><a href="/students" class="btn btn-return">Return</a></div>
+    </main>
+<%- include('../../fragments/footer.ejs') %>
