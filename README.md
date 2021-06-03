@@ -10,4 +10,4 @@
 
 ## Database schema
 
-![Database schema] (https://github.com/MykytaManuilenko/TIN/blob/main/Database_schema.png?raw=true)
+![Database schema](https://github.com/MykytaManuilenko/TIN/blob/main/Database_schema.png?raw=true)
